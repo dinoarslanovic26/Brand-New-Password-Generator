@@ -39,7 +39,7 @@ function questions() {
     // If the password length is not between 8 and 128, display an alert and re-run the function
     alert("Choose a number between 8 and 128");
     return questions();
-  } else if ((!askNumbers) && (!askUowerCase) && (!askLowerCase) && (!askSpecial)) {
+  } else if ((!askNumbers) && (!askUpperCase) && (!askLowerCase) && (!askSpecial)) {
     // If the user didn't choose any character types, display an alert and re-run the function
     alert("You must choose at least one type for your password.");
     return questions();
@@ -48,6 +48,48 @@ function questions() {
   // Return the user's responses
   return responses;
 }
+
+function generatePassword() {
+  
+  // Gets the password options from the questions function
+  var passwordOptiions = questions();
+
+// Creates an array to store possible characters for the password.
+  var possibleCharacters = [];
+
+// Whether passwordOptions.askNumbers is true is determined by the if expression. If so, the code contained within the if block will run.
+  // The for loop begins, and the loop variable i is initialized to 0
+  // The loop checks if i is less than the length of the numbers array. If it is, the code inside the loop will execute.
+  // The length property is used to determine the next available index and add the element at index I of the numbers array to the end of the possibleCharacters array.
+  //When I is still less than the length of the numbers array, the loop returns to step 3 and checks again. If it is, the loop's function will run once again. Until I no longer equals the length of the numbers array, this procedure will continue. At that time, the loop will come to an end.
+  if (passwordOptiions.askNumbers) {
+    for (var i = 0; i < numbers.length; i++){
+      possibleCharacters[possibleCharacters.length] = numbers[i];
+    }
+  }
+
+  if (passwordOptiions.askUpperCase) {
+    for (var i = 0; i < upperCase.length; i++){
+      possibleCharacters[possibleCharacters.length] = upperCase[i];
+    }
+  }
+
+  if (passwordOptiions.asklowerCase) {
+    for (var i = 0; i < lowerCase.length; i++){
+      possibleCharacters[possibleCharacters.length] = lowerCase[i];
+    }
+  }
+
+  if (passwordOptiions.askSpecial) {
+    for (var i = 0; i < special.length; i++){
+      possibleCharacters[possibleCharacters.length] = special[i];
+    }
+  }
+
+}
+
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");

@@ -67,25 +67,33 @@ function generatePassword() {
       possibleCharacters[possibleCharacters.length] = numbers[i];
     }
   }
-
+//Add uppercase letters to the array if the passwordOptions includes askUpperCase
   if (passwordOptiions.askUpperCase) {
     for (var i = 0; i < upperCase.length; i++){
       possibleCharacters[possibleCharacters.length] = upperCase[i];
     }
   }
-
-  if (passwordOptiions.asklowerCase) {
+//Add lowercase letters to the array if the passwordOptions includes askLowerCase
+  if (passwordOptiions.askLowerCase) {
     for (var i = 0; i < lowerCase.length; i++){
       possibleCharacters[possibleCharacters.length] = lowerCase[i];
     }
   }
-
+//Add special letters to the array if the passwordOptions includes askSpecial
   if (passwordOptiions.askSpecial) {
     for (var i = 0; i < special.length; i++){
       possibleCharacters[possibleCharacters.length] = special[i];
     }
   }
+//finalPassword is a variable that will be used to store the final password that is generated
+var finalPassword = "";
 
+
+for (var i = 0; i < passwordOptiions.length; i++) {
+  finalPassword += possibleCharacters[Math.floor(Math.random() * possibleCharacters.length)];
+}
+
+return finalPassword;
 }
 
 
